@@ -1,0 +1,15 @@
+# Nginx Folders
+sites-available
+sites-enabled
+snippets
+
+# Nginx Files
+fastcgi_params
+fastcgi.conf
+koi-utf
+koi-win
+mime.types
+proxy_params
+scgi_params
+uwsgi_params
+win-utf
