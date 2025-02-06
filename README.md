@@ -11,8 +11,9 @@ I'm also heavily inspired by [Jennifer Dewalt](https://jenniferdewalt.com/), who
 **180 Websites in 180 Weeks.**
 
 1. Every week, I'll design, build and launch a new website for 180 consecutive weeks.
-2. Every website must be accompanied by a blog post documenting challenges and key takeaways.
-3. All code will be publically available on GitHub.
+2. No revisiting old websites, keep moving forwards.
+3. Every website must be accompanied by a blog post documenting challenges and key takeaways.
+4. All code will be publically available on GitHub.
 
 # Setup
 
