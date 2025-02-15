@@ -26,22 +26,8 @@
                 transition: background-color 0.5s ease-in-out;
             }
 
-            .image1:hover {
-                background-color: lightcoral;
-            }
-
-            .image1:hover ~ .image2  {
-                background-color: grey;
-                opacity: 0.5;
-            }
-
             .image2:hover {
                 background-color: lightblue;
-            }
-
-            .container:has(.image2:hover) .image1  {
-                background-color: grey;
-                opacity: 0.5;
             }
 
         </style>
@@ -54,13 +40,11 @@
         </header>
         
         <main>
-            <h4>
-                Pick the <span class="highlight_red">Red Pill</span> or the <span class="highlight_blue">Blue Pill</span>.
-            </h4>
             <div class="container">
-                <a href="red.html">
-                    <img class="image image1" src="/images/red_pill.svg" alt="Left hand holding a red pill.">
-                </a>
+                <h4>
+                    you choose the path of deliberate practice<br>
+                    it's going to be tough but you can do it
+                </h4>
                 <a href="blue.html">
                     <img class="image image2" src="/images/blue_pill.svg" alt="Right hand holding a blue pill.">
                 </a>
@@ -68,6 +52,7 @@
         </main>
         
         <footer>
+            <a href="red.html">Check out Red</a><br>
             <a href="index.html">Return home</a>
         </footer>
     </body>
