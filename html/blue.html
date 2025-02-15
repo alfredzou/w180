@@ -9,7 +9,7 @@
                 color: rgb(250, 0, 0);
                 font-weight: 600;
             }
-
+            
             .highlight_blue {
                 color: blue;
                 font-weight: 600;
@@ -20,16 +20,6 @@
                 justify-content: center; 
                 gap: 20px;
             }
-
-            .image {
-                transition: opacity 0.5s ease-in-out;
-                transition: background-color 0.5s ease-in-out;
-            }
-
-            .image2:hover {
-                background-color: lightblue;
-            }
-
         </style>
     </head>
     <body>
@@ -41,9 +31,21 @@
         
         <main>
             <div class="container">
-                <h4>
-                    you choose the path of deliberate practice<br>
-                    it's going to be tough but you can do it
+                <h4 style="text-align: left;">
+                    You choose the <span class="highlight_blue">Blue Pill</span>.<br><br>
+                    
+                    The <span class="highlight_blue">Blue Pill</span> represents a comfortable illusion.<br>
+                    A world where learning feels productive but leads nowhere.<br><br>
+                    
+                    Choosing the <span class="highlight_blue">Blue Pill</span> means:
+                    <li>staying in your comfort zone, avoiding real challenges.</li>
+                    <li>consuming tutorials and knowledge without applying it.</li>
+                    <li>sticking to what's easy, avoiding discomfort, and mistaking motion for progress.</li>
+
+                    <br>
+
+                    Or will you take the <a href = "red.html" class="highlight_red">Red Pill</a>?
+                    
                 </h4>
                 <a href="blue.html">
                     <img class="image image2" src="/images/blue_pill.svg" alt="Right hand holding a blue pill.">
@@ -52,7 +54,6 @@
         </main>
         
         <footer>
-            <a href="red.html">Check out Red</a><br>
             <a href="index.html">Return home</a>
         </footer>
     </body>
