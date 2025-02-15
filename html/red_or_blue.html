@@ -5,25 +5,45 @@
         <title>Red or Blue</title>
         <link rel="stylesheet" href="web_styles.css"/>
         <style>
-            .image-container {
-                text-align: center;
-                background-color: orange;
-            }
-
-            .half-image {
-                overflow: hidden;
-                background-color: powderblue;
-            }
-
-            .highlight_red{
+            .highlight_red {
                 color: rgb(250, 0, 0);
                 font-weight: 600;
             }
 
-            .highlight_blue{
+            .highlight_blue {
                 color: blue;
                 font-weight: 600;
             }
+
+            .container {
+                display: flex;
+                justify-content: center; 
+                gap: 20px;
+            }
+
+            .image {
+                transition: opacity 0.5s ease-in-out;
+                transition: background-color 0.5s ease-in-out;
+            }
+
+            .image1:hover {
+                background-color: lightcoral;
+            }
+
+            .image1:hover ~ .image2  {
+                background-color: grey;
+                opacity: 0.5;
+            }
+
+            .image2:hover {
+                background-color: lightblue;
+            }
+
+            .container:has(.image2:hover) .image1  {
+                background-color: grey;
+                opacity: 0.5;
+            }
+
         </style>
     </head>
     <body>
@@ -34,8 +54,12 @@
         </header>
         
         <main>
-            <div class="image-container">
-                <img class="half-image" src="/images/Red_or_blue_pill.svg" alt="Left hand holding a red pill and right hand holding a blue pill.">
+            <h4>
+                Pick the <span class="highlight_red">Red Pill</span> or the <span class="highlight_blue">Blue Pill</span>.
+            </h4>
+            <div class = "container">
+                <img class="image image1" src="/images/red_pill.svg" alt="Left hand holding a red pill.">
+                <img class="image image2" src="/images/blue_pill.svg" alt="Right hand holding a blue pill.">
             </div>
         </main>
         
