@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <title>Red or Blue</title>
+        <title>Resistor Colour Generator</title>
         <link rel="stylesheet" href="web_styles.css"/>
         <style>
             .container {
@@ -23,14 +23,91 @@
     <body>
         <header>
             <h1>
-                Week 3: Resistor Calculator
+                Week 3: Resistor Colour Generator
             </h1>
         </header>
         
         <main>
-            <div class="container">
-                <img src="/images/resitor_bands.png" alt="Resistor with 4 bands: yellow, purple, orange and gold.">
-                <div class="band-overlay band1"></div>
+            <canvas id="resistorCanvas"></canvas>
+            
+            <script>
+                const img = new Image();
+                img.src = "/images/resistor_bands.png"
+                const canvas = document.getElementById("resistorCanvas");
+                const ctx = canvas.getContext("2d");
+                
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+
+                    ctx.drawImage(img,0,0);
+                };
+
+                function getRandomItem(arr) {
+                    return arr[Math.floor(Math.random() * arr.length)];
+                }
+                    
+                // const firstSecondBand = {
+                //     black: 0
+                //     , brown: 1
+                //     , red: 2
+                //     , orange: 3
+                //     , yellow: 4
+                //     , green: 5
+                //     , blue: 6
+                //     , violet: 7
+                //     , grey: 8
+                //     , white: 9
+                // }
+                
+                // const multiplierBand = {
+                //     black: 1
+                //     , brown: 10
+                //     , red: 100
+                //     , orange: 1000
+                //     , yellow: 10000
+                //     , green: 100000
+                //     , blue: 1000000
+                //     , violet: 10000000
+                //     , grey: 100000000
+                //     , white: 1000000000
+                //     , gold: 0.1
+                //     , silver: 0.01
+                // }                    
+
+                // const toleranceBand = {
+                //     brown: 1
+                //     , red: 2
+                //     , orange: 0.05
+                //     , yellow: 0.02
+                //     , green: 0.5
+                //     , blue: 0.25
+                //     , violet: 0.1
+                //     , grey: 0.01
+                //     , gold: 5
+                //     , silver: 10
+                // }   
+                
+                const firstSecondBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"];
+                const multiplierBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white", "gold", "silver"];
+                const toleranceBand = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "gold", "silver"];
+
+                function randomise_bands() {
+                    ctx.fillStyle = getRandomItem(firstSecondBand);
+                    ctx.fillRect(292, 82, 30, 110); //x, y, w, h
+                    ctx.fillStyle = getRandomItem(firstSecondBand);
+                    ctx.fillRect(333, 92, 30, 90); //x, y, w, h
+                    ctx.fillStyle = getRandomItem(multiplierBand);
+                    ctx.fillRect(375, 92, 30, 90); //x, y, w, h
+                    ctx.fillStyle = getRandomItem(toleranceBand);
+                    ctx.fillRect(456, 82, 30, 110); //x, y, w, h
+                }
+            </script>
+
+            <p>
+                <button onclick="randomise_bands()">Randomise Bands</button>
+            </p>
+
         </main>
         
         <footer>
