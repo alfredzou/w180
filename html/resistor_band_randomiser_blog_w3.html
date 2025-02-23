@@ -14,37 +14,36 @@
         
         <main>
             <p>
-                For this week I wanted to create something simple. Essentially click an image, which would take you to another page. I was surprised how difficult it was. First, I couldn’t get any image to show up because my nginx configuration file wasn’t pointed towards my images folder.
+                For this week, I wanted to add some interactivity, as I’m already bored of HTML and CSS. I thought creating a resistor calculator would be simple enough and achievable for my current capabilities. This is inspired by my recent foray into electronics, where I often have difficulty telling the resistance value of a resistor. The resistors I have contain 4 coloured band that show the resistance value.
             </p>
 
             <p>
-                Second, I spent way too long trying to use CSS to split up an image in half. This is to allow each image to act as a link to another page. I waste a lot of time trying to understand how to crop an image, but decided to instead use a SVG editor to break the image up into two. This was so much easier to work with, and is a good reminder to myself not to be stubborn and think flexibly.
+                The website would involve a user selecting the colours of a 4-band resistor, which would cause an image of a resistor to update to show the selected colour. After all 4 bands are selected, the resistance value of the resistor would be displayed.
             </p>
 
             <p>
-                This website was inspired by Neo’s choice in The Matrix: take the red pill and wake up to reality, no matter how difficult, or take the blue pill and remain in a comfortable illusion.
+                Sounds simple enough, only problem is that I have no experience in writing JavaScript. The first feature I wanted to tackle was displaying an image of a resistor, and updating the colours of its bands. I had no idea how to approach this, and that’s when I learnt about the canvas, a html element that allows JavaScript to draw in graphics. 
             </p>
 
             <p>
-                This choice mirrors the journey of learning. You can either embrace the red pill—the difficult path of deliberate practice, where you actively apply what you learn, push through discomfort, and grow through failure. Or, you can stay in the blue pill mindset, consuming endless tutorials without ever taking action—stuck in the illusion of progress.
+                The combination of the canvas and JavaScript allowed me to update the colours of the bands by drawing in coloured rectangles. The positioning of these rectangle boxes was achieved by adjusting the x position, y position, width and height. There is probably a method where you can loop over the band, and based on existing band colour replace them. The current method doesn’t look great, but at least it’s simple and functional. Additionally, I had added in a button, which would randomise the band colour from a certain pool of legitimate colours and update the bands in the resistor image.
             </p>
 
             <p>
-                From my own experience, I’ve leaned heavily toward passive learning—watching tutorials, reading, but rarely applying. However, I’ve begun questioning this approach. Moving forward, my focus will be on application over consumption, choosing the red pill of real learning.
+                By this point, I had realised the scope for this website was way too big, so I changed the aim from a resistor calculator to a resistor band randomiser. A resistor band randomiser randomises the bands of a resistor, so not very helpful. However, this will be the stepping stone for next week’s website, where I will attempt the resistor calculator. I had originally hoped to build a separate website for each week, but on reflection I think the important part is showing up and getting my reps in.
             </p>
             
             <h5>
                 Learnings
             </h5>
             <p>
-                <li>Nginx configuration file needs to point to every served file</li>
-                <li>Be flexible, not stubborn</li>
-                <li>External, internal and inline style can be mix and matched</li>
-                <li>CSS is hard. There are so many attributes</li>
-                <li>Displaying images</li>
-                <li>Centering things</li>
-                <li>CSS with hovering</li>
-                <li>CSS affecting other objects</li>
+                <li>A bit of JavaScript</li>
+                <li>It's ok to reduce the scope</li>
+                <li>JavaScript canvases</li>
+                <li>JavaScript function syntax</li>
+                <li>JavaScript 'const' to declare constants</li>
+                <li>JavaScript arrays</li>
+                <li>JavaScript button</li>
             </p>
 
         </main>
