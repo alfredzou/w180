@@ -79,8 +79,36 @@
                 const multiplierBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white", "gold", "silver"];
                 const toleranceBand = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "gold", "silver"];
 
-                function randomise_bands() {
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                function randomise_bands(band_number) {
+                    if (band_number === 1) {
+                        sx = 292
+                        sy = 82
+                        sw = 30
+                        sh = 110
+                    }
+
+                    if (band_number === 2) {
+                        sx = 333
+                        sy = 92
+                        sw = 30
+                        sh = 90
+                    }
+                    
+                    if (band_number === 3) {
+                        sx = 375
+                        sy = 92
+                        sw = 30
+                        sh = 90
+                    }
+
+                    if (band_number === 4) {
+                        sx = 456
+                        sy = 82
+                        sw = 30
+                        sh = 110
+                    }
+
+                    const imageData = ctx.getImageData(sx, sy, sw, sh);
                     const data = imageData.data;
                     for (let i = 0; i < data.length; i += 4) {
                         if (data[i] === 255 && data[i + 1] === 255 && data[i + 2] === 255) {
@@ -89,21 +117,16 @@
                             data[i + 2] = 0
                         }
                     }
-                    ctx.putImageData(imageData, 0, 0)
                     
-                    // ctx.fillStyle = getRandomItem(firstSecondBand);
-                    // ctx.fillRect(292, 82, 30, 110); //x, y, w, h
-                    // ctx.fillStyle = getRandomItem(firstSecondBand);
-                    // ctx.fillRect(333, 92, 30, 90); //x, y, w, h
-                    // ctx.fillStyle = getRandomItem(multiplierBand);
-                    // ctx.fillRect(375, 92, 30, 90); //x, y, w, h
-                    // ctx.fillStyle = getRandomItem(toleranceBand);
-                    // ctx.fillRect(456, 82, 30, 110); //x, y, w, h
+                    ctx.putImageData(imageData, sx, sy)
                 }
             </script>
 
             <p>
-                <button onclick="randomise_bands()">Randomise Bands</button>
+                <button onclick="randomise_bands(1)">Band 1</button>
+                <button onclick="randomise_bands(2)">Band 2</button>
+                <button onclick="randomise_bands(3)">Band 3</button>
+                <button onclick="randomise_bands(4)">Band 4</button>
             </p>
             <br>
 
