@@ -16,6 +16,9 @@
         
         <main>
             <canvas id="resistorCanvas"></canvas>
+            <p id="resistanceValue">
+
+            </p>
             
             <script>
                 const img = new Image();
@@ -119,6 +122,9 @@
                     }
                     
                     ctx.putImageData(imageData, sx, sy)
+                    
+                    const output_text = document.getElementById('resistanceValue')
+                    output_text.textContent = "Resistance: " + 100 
                 }
             </script>
 
