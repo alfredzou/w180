@@ -8,29 +8,33 @@
     <body>
         <header>
             <h1>
-                Week 4: Resistor Calculator
+                Week 4: Resistor Calculator II
             </h1>
         </header>
         
         <main>
             <p>
-                For this week, I wanted to add some interactivity, as I’m already bored of HTML and CSS. I thought creating a resistor calculator would be simple enough and achievable for my current capabilities. This is inspired by my recent foray into electronics, where I often have difficulty telling the resistance value of a resistor. The resistors I have contain 4 coloured band that show the resistance value.
+                For this week, I wanted to build on the foundations on the previous week. Previously I had added a button that would randomise he colour bands by drawing a rectangular box over the resistor image. I wasn’t really a fan of this approach as the rectangular boxes looked jarring. For this week, I wanted to improve this functionality by directly replacing the pixels of the band colour with the selected colour.
             </p>
 
             <p>
-                The website would involve a user selecting the colours of a 4-band resistor, which would cause an image of a resistor to update to show the selected colour. After all 4 bands are selected, the resistance value of the resistor would be displayed.
+                I started this pixel replacement attempt by replacing the starting band colours with white. I did this by finding out the RBG colour combination of the bands and converting them to white. This more or less worked but was leaving ugly artifacts on the edges of the bands. I attempted to use tolerances to clean up the edges, but that didn’t really do much. Applying too much tolerance would break the borders of the bands.
             </p>
 
             <p>
-                Sounds simple enough, only problem is that I have no experience in writing JavaScript. The first feature I wanted to tackle was displaying an image of a resistor, and updating the colours of its bands. I had no idea how to approach this, and that’s when I learnt about the canvas, a html element that allows JavaScript to draw in graphics. 
+                Thinking back to the lesson in the earlier week, where it was much easier to manually manipulate an image to display left and right halves of it than use HTML. I applied a similar idea of using gimp to turn the bands white and clean up the edges.
             </p>
 
             <p>
-                The combination of the canvas and JavaScript allowed me to update the colours of the bands by drawing in coloured rectangles. The positioning of these rectangle boxes was achieved by adjusting the x position, y position, width and height. There is probably a method where you can loop over the band, and based on existing band colour replace them. The current method doesn’t look great, but at least it’s simple and functional. Additionally, I had added in a button, which would randomise the band colour from a certain pool of legitimate colours and update the bands in the resistor image.
+                Despite this, the earlier code was still useful, as I could implement the same logic to turn the white pixels into a desired colour. I was having difficulty figuring out why it wasn’t working, but I had accidentally been turning the transparency to 0. After I figured it out, the colour change worked seamlessly.
             </p>
 
             <p>
-                By this point, I had realised the scope for this website was way too big, so I changed the aim from a resistor calculator to a resistor band randomiser. A resistor band randomiser randomises the bands of a resistor, so not very helpful. However, this will be the stepping stone for next week’s website, where I will attempt the resistor calculator. I had originally hoped to build a separate website for each week, but on reflection I think the important part is showing up and getting my reps in.
+                To expand the functionality, I created another HTML element to display text for a possible future resistance value. On clicking the button to change the colour, the text also gets updated.
+            </p>
+            
+            <p>
+                Again, I have underestimated the scope for this project, so next week I will add a way to select the colour of the bands, and hopefully output the resistance value. I’m sort of thinking if this one website a week thing makes sense. Atomic habits supports the idea of being process driven rather than output driven. Based on that I think I should focus on the process rather the aim of delivering one website per week. Regardless I am still learning web development.
             </p>
             
             <h5>
