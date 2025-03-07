@@ -17,136 +17,6 @@
         <main>
             <canvas id="resistorCanvas"></canvas>
             <p id="resistanceValue">Resistance: TBC</p>
-            
-            <script>
-                const img = new Image();
-                img.src = "/images/resistor_bands.png";
-                const canvas = document.getElementById("resistorCanvas");
-                const ctx = canvas.getContext("2d");
-                
-                img.onload = function () {
-                    canvas.width = img.width;
-                    canvas.height = 220;
-
-                    ctx.drawImage(img,0,0);
-                };
-
-                function getRandomItem(arr) {
-                    return arr[Math.floor(Math.random() * arr.length)];
-                }
-                    
-                // const firstSecondBand = {
-                //     black: 0
-                //     , brown: 1
-                //     , red: 2
-                //     , orange: 3
-                //     , yellow: 4
-                //     , green: 5
-                //     , blue: 6
-                //     , violet: 7
-                //     , grey: 8
-                //     , white: 9
-                // }
-                
-                // const multiplierBand = {
-                //     black: 1
-                //     , brown: 10
-                //     , red: 100
-                //     , orange: 1000
-                //     , yellow: 10000
-                //     , green: 100000
-                //     , blue: 1000000
-                //     , violet: 10000000
-                //     , grey: 100000000
-                //     , white: 1000000000
-                //     , gold: 0.1
-                //     , silver: 0.01
-                // }                    
-
-                // const toleranceBand = {
-                //     brown: 1
-                //     , red: 2
-                //     , orange: 0.05
-                //     , yellow: 0.02
-                //     , green: 0.5
-                //     , blue: 0.25
-                //     , violet: 0.1
-                //     , grey: 0.01
-                //     , gold: 5
-                //     , silver: 10
-                // }   
-                
-                function getRGBFromColorName(colorName) {
-                    let tempElement = document.createElement("div")
-                    tempElement.style.color = colorName
-                    document.body.appendChild(tempElement)
-
-                    let computedColor = window.getComputedStyle(tempElement).color
-                    document.body.removeChild(tempElement)
-
-                    let match = computedColor.match(/\d+/g)
-
-                    return match
-                }
-
-                const firstSecondBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"];
-                const multiplierBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white", "gold", "silver"];
-                const toleranceBand = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "gold", "silver"];
-
-                function setBandColor(band_number) {
-                    if (band_number === 1) {
-                        sx = 292
-                        sy = 82
-                        sw = 30
-                        sh = 110
-                    }
-
-                    if (band_number === 2) {
-                        sx = 333
-                        sy = 92
-                        sw = 30
-                        sh = 90
-                    }
-                    
-                    if (band_number === 3) {
-                        sx = 375
-                        sy = 92
-                        sw = 30
-                        sh = 90
-                    }
-
-                    if (band_number === 4) {
-                        sx = 456
-                        sy = 82
-                        sw = 30
-                        sh = 110
-                    }
-
-                    color = getRGBFromColorName('grey')
-                    const r = color[0]
-                    const g = color[1]
-                    const b = color[2]
-
-                    const imageData = ctx.getImageData(sx, sy, sw, sh);
-                    const data = imageData.data;
-                    for (let i = 0; i < data.length; i += 4) {
-                        if (data[i] === 255 && data[i + 1] === 255 && data[i + 2] === 255) {
-                            data[i] = r
-                            data[i + 1] = g
-                            data[i + 2] = b
-                        }
-                    }
-                    
-                    ctx.putImageData(imageData, sx, sy)
-                    
-                    const output_text = document.getElementById('resistanceValue')
-                    const resistance = 100
-                    const unit = 'MΩ'
-                    const tolerance = 0.5
-                    
-                    output_text.textContent = `Resistance: ${resistance} ${unit} ± ${tolerance}%` 
-                }
-            </script>
 
             <form action="/submit" method="POST">
                 <p>Choose your colour bands:</p>
@@ -252,11 +122,182 @@
                 </fieldset>
             </form>
 
+            <script>
+                const img = new Image();
+                img.src = "/images/resistor_bands.png";
+                const canvas = document.getElementById("resistorCanvas");
+                const ctx = canvas.getContext("2d");
+                
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = 220;
+
+                    ctx.drawImage(img,0,0);
+                };
+
+                function getRandomItem(arr) {
+                    return arr[Math.floor(Math.random() * arr.length)];
+                }
+                    
+                // const firstSecondBand = {
+                //     black: 0
+                //     , brown: 1
+                //     , red: 2
+                //     , orange: 3
+                //     , yellow: 4
+                //     , green: 5
+                //     , blue: 6
+                //     , violet: 7
+                //     , grey: 8
+                //     , white: 9
+                // }
+                
+                // const multiplierBand = {
+                //     black: 1
+                //     , brown: 10
+                //     , red: 100
+                //     , orange: 1000
+                //     , yellow: 10000
+                //     , green: 100000
+                //     , blue: 1000000
+                //     , violet: 10000000
+                //     , grey: 100000000
+                //     , white: 1000000000
+                //     , gold: 0.1
+                //     , silver: 0.01
+                // }                    
+
+                // const toleranceBand = {
+                //     brown: 1
+                //     , red: 2
+                //     , orange: 0.05
+                //     , yellow: 0.02
+                //     , green: 0.5
+                //     , blue: 0.25
+                //     , violet: 0.1
+                //     , grey: 0.01
+                //     , gold: 5
+                //     , silver: 10
+                // }   
+                
+                function getRGBFromColorName(colorName) {
+                    let tempElement = document.createElement("div")
+                    tempElement.style.color = colorName
+                    document.body.appendChild(tempElement)
+
+                    let computedColor = window.getComputedStyle(tempElement).color
+                    document.body.removeChild(tempElement)
+
+                    let match = computedColor.match(/\d+/g)
+
+                    return match
+                }
+
+                const firstSecondBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"];
+                const multiplierBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white", "gold", "silver"];
+                const toleranceBand = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "gold", "silver"];
+
+                function setBandColor(bandNumber, bandColor, previousBandColor) {
+                    if (bandNumber === 1) {
+                        sx = 292
+                        sy = 82
+                        sw = 30
+                        sh = 110
+                    }
+
+                    if (bandNumber === 2) {
+                        sx = 333
+                        sy = 92
+                        sw = 30
+                        sh = 90
+                    }
+                    
+                    if (bandNumber === 3) {
+                        sx = 375
+                        sy = 92
+                        sw = 30
+                        sh = 90
+                    }
+
+                    if (bandNumber === 4) {
+                        sx = 456
+                        sy = 82
+                        sw = 30
+                        sh = 110
+                    }
+
+                    console.log(bandColor)
+                    color = getRGBFromColorName(bandColor)
+                    const r = parseInt(color[0])
+                    const g = parseInt(color[1])
+                    const b = parseInt(color[2])
+
+                    console.log(previousBandColor)
+                    previousColor = getRGBFromColorName(previousBandColor)
+                    const previousR = parseInt(previousColor[0])
+                    const previousG = parseInt(previousColor[1])
+                    const previousB = parseInt(previousColor[2])
+
+                    const imageData = ctx.getImageData(sx, sy, sw, sh);
+                    const data = imageData.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        if (data[i] === previousR && data[i + 1] === previousG && data[i + 2] === previousB) {
+                            data[i] = r
+                            data[i + 1] = g
+                            data[i + 2] = b
+                        }
+                    }
+                    
+                    ctx.putImageData(imageData, sx, sy)
+                    
+                    const output_text = document.getElementById('resistanceValue')
+                    const resistance = 100
+                    const unit = 'MΩ'
+                    const tolerance = 0.5
+                    
+                    output_text.textContent = `Resistance: ${resistance} ${unit} ± ${tolerance}%` 
+                }
+
+                b1PreviousValue = 'white'
+                b2PreviousValue = 'white'
+                b3PreviousValue = 'white'
+                b4PreviousValue = 'white'
+
+                document.querySelectorAll('input[name="band1"]').forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        setBandColor(1, this.value, b1PreviousValue)
+                        b1PreviousValue = this.value
+                    })
+                })
+
+                document.querySelectorAll('input[name="band2"]').forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        setBandColor(2, this.value, b2PreviousValue)
+                        b2PreviousValue = this.value
+                    })
+                })
+
+                document.querySelectorAll('input[name="band3"]').forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        setBandColor(3, this.value, b3PreviousValue)
+                        b3PreviousValue = this.value
+                    })
+                })
+
+                document.querySelectorAll('input[name="band4"]').forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        setBandColor(4, this.value, b4PreviousValue)
+                        b4PreviousValue = this.value
+                    })
+                })
+
+            </script>
+
             <p>
-                <button onclick="setBandColor(1)">Band 1</button>
+                <!-- <button onclick="setBandColor(1)">Band 1</button>
                 <button onclick="setBandColor(2)">Band 2</button>
                 <button onclick="setBandColor(3)">Band 3</button>
-                <button onclick="setBandColor(4)">Band 4</button>
+                <button onclick="setBandColor(4)">Band 4</button> -->
             </p>
             <br>
 
