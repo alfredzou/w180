@@ -249,21 +249,21 @@
                             const b3 = document.querySelector('input[name="band3"]:checked').value
                             const b4 = document.querySelector('input[name="band4"]:checked').value
                             console.log(b1,b2,b3,b4)
-                            const b1_int = firstSecondBand[b1]
-                            const b2_int = firstSecondBand[b2] * 10
+                            const b1_int = firstSecondBand[b1] * 10
+                            const b2_int = firstSecondBand[b2] 
                             const b3_int = multiplierBand[b3]
                             console.log(b1_int,b2_int,b3_int)
                             let resistance = (b1_int + b2_int) * b3_int
                             console.log(resistance)
-                            if (resistance /1_000_000_000 > 1) {
+                            if (resistance /1_000_000_000 >= 1) {
                                 unit_prefix = 'G'
                                 resistance = resistance/1_000_000_000
                             } 
-                            else if (resistance /1_000_000 > 1) {
+                            else if (resistance /1_000_000 >= 1) {
                                 unit_prefix = 'M'
                                 resistance = resistance/1_000_000
                             } 
-                            else if (resistance /1_000 > 1) {
+                            else if (resistance /1_000 >= 1) {
                                 unit_prefix = 'K'
                                 resistance = resistance/1_000                            } 
                             else {
