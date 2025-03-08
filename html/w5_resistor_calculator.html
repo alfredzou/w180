@@ -134,51 +134,47 @@
 
                     ctx.drawImage(img,0,0);
                 };
-
-                function getRandomItem(arr) {
-                    return arr[Math.floor(Math.random() * arr.length)];
-                }
                     
-                // const firstSecondBand = {
-                //     black: 0
-                //     , brown: 1
-                //     , red: 2
-                //     , orange: 3
-                //     , yellow: 4
-                //     , green: 5
-                //     , blue: 6
-                //     , violet: 7
-                //     , grey: 8
-                //     , white: 9
-                // }
+                const firstSecondBand = {
+                    black: 0
+                    , brown: 1
+                    , red: 2
+                    , orange: 3
+                    , yellow: 4
+                    , green: 5
+                    , blue: 6
+                    , violet: 7
+                    , grey: 8
+                    , white: 9
+                }
                 
-                // const multiplierBand = {
-                //     black: 1
-                //     , brown: 10
-                //     , red: 100
-                //     , orange: 1000
-                //     , yellow: 10000
-                //     , green: 100000
-                //     , blue: 1000000
-                //     , violet: 10000000
-                //     , grey: 100000000
-                //     , white: 1000000000
-                //     , gold: 0.1
-                //     , silver: 0.01
-                // }                    
+                const multiplierBand = {
+                    black: 1
+                    , brown: 10
+                    , red: 100
+                    , orange: 1000
+                    , yellow: 10000
+                    , green: 100000
+                    , blue: 1000000
+                    , violet: 10000000
+                    , grey: 100000000
+                    , white: 1000000000
+                    , gold: 0.1
+                    , silver: 0.01
+                }                    
 
-                // const toleranceBand = {
-                //     brown: 1
-                //     , red: 2
-                //     , orange: 0.05
-                //     , yellow: 0.02
-                //     , green: 0.5
-                //     , blue: 0.25
-                //     , violet: 0.1
-                //     , grey: 0.01
-                //     , gold: 5
-                //     , silver: 10
-                // }   
+                const toleranceBand = {
+                    brown: 1
+                    , red: 2
+                    , orange: 0.05
+                    , yellow: 0.02
+                    , green: 0.5
+                    , blue: 0.25
+                    , violet: 0.1
+                    , grey: 0.01
+                    , gold: 5
+                    , silver: 10
+                }   
                 
                 function getRGBFromColorName(colorName) {
                     let tempElement = document.createElement("div")
@@ -192,10 +188,6 @@
 
                     return match
                 }
-
-                const firstSecondBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"];
-                const multiplierBand = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white", "gold", "silver"];
-                const toleranceBand = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "gold", "silver"];
 
                 function setBandColor(bandNumber, bandColor, previousBandColor) {
                     if (bandNumber === 1) {
@@ -226,13 +218,11 @@
                         sh = 110
                     }
 
-                    console.log(bandColor)
                     color = getRGBFromColorName(bandColor)
                     const r = parseInt(color[0])
                     const g = parseInt(color[1])
                     const b = parseInt(color[2])
 
-                    console.log(previousBandColor)
                     previousColor = getRGBFromColorName(previousBandColor)
                     const previousR = parseInt(previousColor[0])
                     const previousG = parseInt(previousColor[1])
@@ -250,12 +240,42 @@
                     
                     ctx.putImageData(imageData, sx, sy)
                     
-                    const output_text = document.getElementById('resistanceValue')
-                    const resistance = 100
-                    const unit = 'MΩ'
-                    const tolerance = 0.5
-                    
-                    output_text.textContent = `Resistance: ${resistance} ${unit} ± ${tolerance}%` 
+                    if (document.querySelector('input[name="band1"]:checked')
+                        && document.querySelector('input[name="band2"]:checked') 
+                        && document.querySelector('input[name="band3"]:checked') 
+                        && document.querySelector('input[name="band4"]:checked')) {
+                            const b1 = document.querySelector('input[name="band1"]:checked').value
+                            const b2 = document.querySelector('input[name="band2"]:checked').value
+                            const b3 = document.querySelector('input[name="band3"]:checked').value
+                            const b4 = document.querySelector('input[name="band4"]:checked').value
+                            console.log(b1,b2,b3,b4)
+                            const b1_int = firstSecondBand[b1]
+                            const b2_int = firstSecondBand[b2] * 10
+                            const b3_int = multiplierBand[b3]
+                            console.log(b1_int,b2_int,b3_int)
+                            let resistance = (b1_int + b2_int) * b3_int
+                            console.log(resistance)
+                            if (resistance /1_000_000_000 > 1) {
+                                unit_prefix = 'G'
+                                resistance = resistance/1_000_000_000
+                            } 
+                            else if (resistance /1_000_000 > 1) {
+                                unit_prefix = 'M'
+                                resistance = resistance/1_000_000
+                            } 
+                            else if (resistance /1_000 > 1) {
+                                unit_prefix = 'K'
+                                resistance = resistance/1_000                            } 
+                            else {
+                                unit_prefix = ''
+                            } 
+
+                            const unit = `${unit_prefix}Ω`
+                            const tolerance = toleranceBand[b4]
+
+                            const output_text = document.getElementById('resistanceValue')
+                            output_text.textContent = `Resistance: ${resistance} ${unit} ± ${tolerance}%` 
+                    }
                 }
 
                 b1PreviousValue = 'white'
@@ -292,15 +312,6 @@
                 })
 
             </script>
-
-            <p>
-                <!-- <button onclick="setBandColor(1)">Band 1</button>
-                <button onclick="setBandColor(2)">Band 2</button>
-                <button onclick="setBandColor(3)">Band 3</button>
-                <button onclick="setBandColor(4)">Band 4</button> -->
-            </p>
-            <br>
-
         </main>
         
         <footer>
