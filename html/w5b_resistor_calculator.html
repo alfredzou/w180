@@ -14,27 +14,23 @@
         
         <main>
             <p>
-                For this week, I wanted to build on the foundations on the previous week. Previously I had added a button that would randomise he colour bands by drawing a rectangular box over the resistor image. I wasn’t really a fan of this approach as the rectangular boxes looked jarring. For this week, I wanted to improve this functionality by directly replacing the pixels of the band colour with the selected colour. Interesting to see how image colours are stored. They're stored in 4 bytes: width * height * 4. The 4 include Red, Green, Blue and Alpha values.
+                This week, I built on last week’s website, which was able to recolour the white bands into a red band by clicking the associated button. I first wanted to find out how I could convert these white bands into any colour. This involved developing some function that would take the string value of a colour, such as red, blue, green, etc. and converting it into its associated RGB value.
             </p>
 
             <p>
-                I started this pixel replacement attempt by replacing the starting band colours with white. I did this by finding out the RBG colour combination of the bands and converting them to white. This more or less worked but was leaving ugly artifacts on the edges of the bands. I attempted to use tolerances to clean up the edges, but that didn’t really do much. Applying too much tolerance would break the borders of the bands.
+                After that was successfully done, I needed a way for users to input what colour they wanted the bands to be. Initially I thought a drop-down box would probably be the best, but on review it would add a lot of extra complexity. These include behaviour on hover. For simplicity, I decided radio buttons would work well.
             </p>
 
             <p>
-                Thinking back to the lesson in the earlier week, where it was much easier to manually manipulate an image to display left and right halves of it than use HTML. I applied a similar idea of using gimp to turn the bands white and clean up the edges.
+                Each band has its unique list of possible values, so I accounted for that. Originally, I was thinking a design where 4 options were selected, then the user would click a ‘submit’ button would be good. However, that’s not a very responsive solution. Instead, I choose to update the colour in the image, as soon as a radio button is picked. To achieve this, I connected an event listener for each radio button grouping, that would update the associated band colour using last week’s band recolour functionality.
             </p>
 
             <p>
-                Despite this, the earlier code was still useful, as I could implement the same logic to turn the white pixels into a desired colour. I was having difficulty figuring out why it wasn’t working, but I had accidentally been turning the transparency to 0. After I figured it out, the colour change worked seamlessly.
+                I quickly realised that after a colour was set by a radio button, it wouldn’t change because it assumes the colour to be replaced is used a default RGB value of white. I used some variables to keep track of the previous colour, which would feed into the function to convert it into a RGB value for replacement.
             </p>
 
             <p>
-                To expand the functionality, I created another HTML element to display text for a possible future resistance value. On clicking the button to change the colour, the text also gets updated.
-            </p>
-            
-            <p>
-                Again, I have underestimated the scope for this project, so next week I will add a way to select the colour of the bands, and hopefully output the resistance value. I’m sort of thinking if this one website a week thing makes sense. Atomic habits supports the idea of being process driven rather than output driven. Based on that I think I should focus on the process rather the aim of delivering one website per week. Regardless I am still learning web development.
+                Afterwards, I decided its not good to have a button to submit and calculate the resistance value. Instead, I added in some logic where if there are 4 radio buttons selected, the resistance value would be calculated. I had some initial issues with the calculation, but it turned out well. I learnt how do some template literals, which is equivalent to a Python f-string.
             </p>
             
             <h5>
