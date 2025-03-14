@@ -15,7 +15,36 @@
         </header>
 
         <main>
-           <canvas id="minesweeperCanvas"></canvas>
+           <canvas id="minesweeperCanvas" height="388" width="388"></canvas>
+
+           <script>
+                const canvas = document.getElementById("minesweeperCanvas");
+                const ctx = canvas.getContext("2d");
+
+                const images = [
+                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
+                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
+                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
+                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
+                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
+                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
+                    ]
+
+                for (let i=0; i<images.length; i++) {
+                    const img = new Image()
+                    img.src = images[i]                   
+
+                    img.onload = function () {            
+                        const scaleFactor = 0.3  
+                        const newWidth = img.width * scaleFactor
+                        const newHeight = img.height * scaleFactor
+
+                        const x = newWidth * (i%6)
+                        const y = newHeight * Math.floor(i/6)
+
+                        ctx.drawImage(img, x, y, newWidth, newHeight)
+                    }
+                }             
             </script>
         </main>
         
