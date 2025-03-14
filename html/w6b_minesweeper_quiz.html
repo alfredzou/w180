@@ -14,23 +14,27 @@
         
         <main>
             <p>
-                This week, I built on last week’s website, which was able to recolour the white bands into a red band by clicking the associated button. I first wanted to find out how I could convert these white bands into any colour. This involved developing some function that would take the string value of a colour, such as red, blue, green, etc. and converting it into its associated RGB value.
+                This week, I was inspired by a video on <a href=https://www.youtube.com/watch?v=6vcSO7h6Nt0> Minesweeper Patterns<a> and wanted to create something similar in an interactive form online. 
             </p>
 
             <p>
-                After that was successfully done, I needed a way for users to input what colour they wanted the bands to be. Initially I thought a drop-down box would probably be the best, but on review it would add a lot of extra complexity. These include behaviour on hover. For simplicity, I decided radio buttons would work well.
+                I spent a significant time looking for a minesweeper image asset. There were some nice ones in Wikimedia Commons but they had attribution requirements. I didn’t really understand creative commons licenses before, so I spent some time researching it. Creative commons licenses on a baseline require attribution. Additionally, based on the license type they may prohibit commercial work, derivative work and continuation of the license.  
             </p>
 
             <p>
-                Each band has its unique list of possible values, so I accounted for that. Originally, I was thinking a design where 4 options were selected, then the user would click a ‘submit’ button would be good. However, that’s not a very responsive solution. Instead, I choose to update the colour in the image, as soon as a radio button is picked. To achieve this, I connected an event listener for each radio button grouping, that would update the associated band colour using last week’s band recolour functionality.
+                My favourite license are assets in the public domain, or CC0, where creators give up their copyright. I don’t really want to clutter my webpage with attribution, so I prefer public domain assets. I was able to find a nice image set in the public domain, <a href=https://opengameart.org/content/minesweeper-tile-set>thanks to eugeneloza<a>. I had a nice set of all the numbers, mine, flag, hidden and revealed tiles.
             </p>
 
             <p>
-                I quickly realised that after a colour was set by a radio button, it wouldn’t change because it assumes the colour to be replaced is used a default RGB value of white. I used some variables to keep track of the previous colour, which would feed into the function to convert it into a RGB value for replacement.
+                After that, I attempting to display a grid of images. This builds up on the past week’s website, as I use a canvas with onload to draw the image in. I struggled a bit with the syntax, but I was able to figure it out. I wanted to dynamically load the canvas size based on the size of the images, but resizing the canvas would cause prior canvas and loaded images to be cleared. I attempted to resize the canvas by putting a condition to resize on the first image loading. Then I realised that JavaScript actually loads images asynchronously, which was causing the loaded images to be already cleared. I decided to just hardcode the canvas size for now.
             </p>
 
             <p>
-                Afterwards, I decided its not good to have a button to submit and calculate the resistance value. Instead, I added in some logic where if there are 4 radio buttons selected, the resistance value would be calculated. I had some initial issues with the calculation, but it turned out well. I learnt how do some template literals, which is equivalent to a Python f-string.
+                The next issue was having the images appear side by side each other. I was passing an array of image paths. To determine their location I used modulus on the iteration variable to set the starting x coordinate and took the floor of the iteration variable. These were then multiplied by the scaled width and heights of the images, which allowed me to set the correct location of the images. It worked surprisingly better than expected, as I felt a lot of pain in the past from dealing with CSS and its padding, which I still don't get.
+            </p>
+
+            <p>
+                For next week, I would like to have some sort of function that can convert an input into an array of image paths, so I can have different image patterns. I would also like to add in the functionality for left click to identify safe tiles and right click to put flags. Then there needs to be some sort of logic to check if that was correct or not.
             </p>
             
             <h5>
