@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <title>Minesweeper Quiz I</title>
+        <title>Minesweeper Quiz II</title>
         <link rel="stylesheet" href="web_styles.css"/>
         <style>
         </style>
@@ -10,7 +10,7 @@
     <body>
         <header>
             <h1>
-                Week 6: Minesweeper Quiz I
+                Week 7: Minesweeper Quiz II
             </h1>
         </header>
 
@@ -21,18 +21,28 @@
                 const canvas = document.getElementById("minesweeperCanvas");
                 const ctx = canvas.getContext("2d");
 
-                const images = [
-                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
-                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
-                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
-                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
-                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
-                    '/images/MINESWEEPER_1.png','/images/MINESWEEPER_2.png','/images/MINESWEEPER_3.png','/images/MINESWEEPER_4.png','/images/MINESWEEPER_5.png','/images/MINESWEEPER_6.png',
-                    ]
+                function createImageGrid(grid) {
+                    for (i = 0; i < grid.length; i++) {
+                        grid[i] = `/images/MINESWEEPER_${grid[i]}.png`
+                    }
 
-                for (let i=0; i<images.length; i++) {
+                    return grid
+                }
+
+                const imageGrid = createImageGrid(
+                    [
+                        1,2,3,4,5,6,
+                        1,2,3,4,5,6,
+                        1,2,3,4,5,6,
+                        1,2,3,4,5,6,
+                        1,2,3,4,5,6,
+                        1,2,3,4,5,6,
+                    ]
+                ) 
+                
+                for (let i=0; i<imageGrid.length; i++) {
                     const img = new Image()
-                    img.src = images[i]                   
+                    img.src = imageGrid[i]                   
 
                     img.onload = function () {            
                         const scaleFactor = 0.3  
