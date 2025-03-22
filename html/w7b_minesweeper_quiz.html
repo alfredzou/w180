@@ -14,35 +14,31 @@
         
         <main>
             <p>
-                This week, I was inspired by a video on <a href=https://www.youtube.com/watch?v=6vcSO7h6Nt0> Minesweeper Patterns<a> and wanted to create something similar in an interactive form online. 
+                This week, I created a function to take a grid of inputs into a grid of image paths. After that I wanted to test the function with some unit tests. That brought me to using Jest. I installed Jest and tried using it to test the function. However, because the function was in the html, it wouldn’t work. I then extracted the javascript component and placed it in its own location. I got a bit confused with setting the path of the javascript file, and then recalled it is actually set in the nginx.conf.        
             </p>
-
+            
             <p>
-                I spent a significant time looking for a minesweeper image asset. There were some nice ones in Wikimedia Commons but they had attribution requirements. I didn’t really understand creative commons licenses before, so I spent some time researching it. Creative commons licenses on a baseline require attribution. Additionally, based on the license type they may prohibit commercial work, derivative work and continuation of the license.  
+                After pointing to the right path, I was able to get the code working again. Then I wanted to test it, only to realise that you can’t just test it using node (back-end javascript) because there is no HTML element. This HTML element is called DOM which is called direct object mapping, which is html stored in memory. This is a lot complicated then I thought, you need another software called jsdom to mock the DOM.
             </p>
-
+            
             <p>
-                My favourite license are assets in the public domain, or CC0, where creators give up their copyright. I don’t really want to clutter my webpage with attribution, so I prefer public domain assets. I was able to find a nice image set in the public domain, <a href=https://opengameart.org/content/minesweeper-tile-set>thanks to eugeneloza<a>. I had a nice set of all the numbers, mine, flag, hidden and revealed tiles.
+                After making some changes, the EC2 seemed to have crashed. I wasn’t able to SSH in, and it was a bit frustrating. I wonder if it was because of the code I wrote, a pretty good example of why it’s a bad idea to test in PROD. I wonder if there’s a good way to test locally? Thankfully, when I restarted the instance, it worked fine.        
             </p>
-
+            
             <p>
-                After that, I attempting to display a grid of images. This builds up on the past week’s website, as I use a canvas with onload to draw the image in. I struggled a bit with the syntax, but I was able to figure it out. I wanted to dynamically load the canvas size based on the size of the images, but resizing the canvas would cause prior canvas and loaded images to be cleared. I attempted to resize the canvas by putting a condition to resize on the first image loading. Then I realised that JavaScript actually loads images asynchronously, which was causing the loaded images to be already cleared. I decided to just hardcode the canvas size for now.
-            </p>
-
-            <p>
-                The next issue was having the images appear side by side each other. I was passing an array of image paths. To determine their location I used modulus on the iteration variable to set the starting x coordinate and took the floor of the iteration variable. These were then multiplied by the scaled width and heights of the images, which allowed me to set the correct location of the images. It worked surprisingly better than expected, as I felt a lot of pain in the past from dealing with CSS and its padding, which I still don't get.
-            </p>
-
-            <p>
-                For next week, I would like to have some sort of function that can convert an input into an array of image paths, so I can have different image patterns. I would also like to add in the functionality for left click to identify safe tiles and right click to put flags. Then there needs to be some sort of logic to check if that was correct or not.
+                I didn’t really much progress this week. But I’m happy I showed up and did something. Although there is no visible progress on the website, I have an idea how to pursue testing, which I will dive into next week. I did a quick lookback on the resistor calculator and realised some of the calculations were wrong and were like 10.00000000005. So going forwards I think implementing some testing will be good.
             </p>
             
             <h5>
                 Learnings
             </h5>
             <p>
-                <li>Finding public domain assets are hard</li>
-                <li>Image loading is done async</li>
+                <li>Testing is hard</li>
+                <li>Paths determined by nginx.conf file</li>
+                <li>Progress can be made even if there are no visible outputs</li>
+                <li>Testing in javascript uses jest, and testing of elements that control the browser you need to mock one up using jsdom</li>
+                <li>DOM is document object model that stores the HTML in memory and allows JS to interact with it (without full reload)</li>
+                <li>Node is for backend development</li>
             </p>
 
         </main>
