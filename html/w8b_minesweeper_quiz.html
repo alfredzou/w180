@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Week 7 Blog</title>
+        <link rel="stylesheet" href="./styles.css"/>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Week 7: Minesweeper Quiz II
+            </h1>
+        </header>
+        
+        <main>
+            <p>
+                This week, I created a function to take a grid of inputs into a grid of image paths. After that I wanted to test the function with some unit tests. That brought me to using Jest. I installed Jest and tried using it to test the function. However, because the function was in the html, it wouldn’t work. I then extracted the javascript component and placed it in its own location. I got a bit confused with setting the path of the javascript file, and then recalled it is actually set in the nginx.conf.        
+            </p>
+            
+            <p>
+                After pointing to the right path, I was able to get the code working again. Then I wanted to test it, only to realise that you can’t just test it using node (back-end javascript) because there is no HTML element. This HTML element is called DOM which is called direct object mapping, which is html stored in memory. This is a lot complicated then I thought, you need another software called jsdom to mock the DOM.
+            </p>
+            
+            <p>
+                After making some changes, the EC2 seemed to have crashed. I wasn’t able to SSH in, and it was a bit frustrating. I wonder if it was because of the code I wrote, a pretty good example of why it’s a bad idea to test in PROD. I wonder if there’s a good way to test locally? Thankfully, when I restarted the instance, it worked fine.        
+            </p>
+            
+            <p>
+                I didn’t really much progress this week. But I’m happy I showed up and did something. Although there is no visible progress on the website, I have an idea how to pursue testing, which I will dive into next week. I did a quick lookback on the resistor calculator and realised some of the calculations were wrong and were like 10.00000000005. So going forwards I think implementing some testing will be good.
+            </p>
+            
+            <h5>
+                Learnings
+            </h5>
+            <p>
+                <li>Testing is hard</li>
+                <li>Paths determined by nginx.conf file</li>
+                <li>Progress can be made even if there are no visible outputs</li>
+                <li>Testing in javascript uses jest, and testing of elements that control the browser you need to mock one up using jsdom</li>
+                <li>DOM is document object model that stores the HTML in memory and allows JS to interact with it (without full reload)</li>
+                <li>Node is for backend development</li>
+            </p>
+
+        </main>
+        
+        <footer>
+            <a href="index.html">Return home</a>
+        </footer>
+    </body>
+</html>
