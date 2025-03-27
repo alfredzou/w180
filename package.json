@@ -1,0 +1,23 @@
+{
+  "name": "nginx",
+  "version": "1.0.0",
+  "description": "This project is an experiment in *quantity over quality*. Inspired by the story in *Art & Fear*, I want to put the idea to the test: does producing more lead to better results?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alfredzou/w180.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alfredzou/w180/issues"
+  },
+  "homepage": "https://github.com/alfredzou/w180#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

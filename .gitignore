@@ -13,3 +13,6 @@ proxy_params
 scgi_params
 uwsgi_params
 win-utf
+
+# npm
+node_modules
