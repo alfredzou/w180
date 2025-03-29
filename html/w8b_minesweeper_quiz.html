@@ -14,19 +14,23 @@
         
         <main>
             <p>
-                This week, I created a function to take a grid of inputs into a grid of image paths. After that I wanted to test the function with some unit tests. That brought me to using Jest. I installed Jest and tried using it to test the function. However, because the function was in the html, it wouldn’t work. I then extracted the javascript component and placed it in its own location. I got a bit confused with setting the path of the javascript file, and then recalled it is actually set in the nginx.conf.        
+                This week, I continued exploring how to test JavaScript code. I learned that it’s not as straightforward as python, as one cannot simply import code. JavaScript uses export to allow code to be imported. I’m not sure if this is a good or bad thing, but its notably different from Python. To make matters more confusing there are currently two methods for importing code: the older method CommonJS and the newer method ES Modules (ESM).
             </p>
             
             <p>
-                After pointing to the right path, I was able to get the code working again. Then I wanted to test it, only to realise that you can’t just test it using node (back-end javascript) because there is no HTML element. This HTML element is called DOM which is called direct object mapping, which is html stored in memory. This is a lot complicated then I thought, you need another software called jsdom to mock the DOM.
+                I learnt the export/import for ESM, which was working fine via node. However, enabling ESM for Jest the testing module took a long time and trial and error. The docs weren’t that friendly, couldn’t find a good solution from AI and eventually landed on a solution in stack overflow.
             </p>
             
             <p>
-                After making some changes, the EC2 seemed to have crashed. I wasn’t able to SSH in, and it was a bit frustrating. I wonder if it was because of the code I wrote, a pretty good example of why it’s a bad idea to test in PROD. I wonder if there’s a good way to test locally? Thankfully, when I restarted the instance, it worked fine.        
+                Then when I started to test, by creating an export for the function it broke the code to be used for the website. So, I’m in a sort of weird situation where testing the code, makes me change the way I write code. I’m not really sure how to fix this issue and will investigate next week. Could maybe do a conditional run if main, similar to Python’s if __name__ == ‘__main__’. Or, could separate module into its own file.
             </p>
             
             <p>
-                I didn’t really much progress this week. But I’m happy I showed up and did something. Although there is no visible progress on the website, I have an idea how to pursue testing, which I will dive into next week. I did a quick lookback on the resistor calculator and realised some of the calculations were wrong and were like 10.00000000005. So going forwards I think implementing some testing will be good.
+                Also, I’m uncertain how the testing will work for JavaScript run in the browser, as there is also JavaScript run in the backend with node.        
+            </p>
+            
+            <p>
+                Again, I had a few more crashes of the EC2 instance during testing, really need to start developing and testing on my home computer. It sounds insane to be testing in PROD.
             </p>
             
             <h5>
@@ -34,11 +38,11 @@
             </h5>
             <p>
                 <li>Testing is hard</li>
-                <li>Paths determined by nginx.conf file</li>
-                <li>Progress can be made even if there are no visible outputs</li>
-                <li>Testing in javascript uses jest, and testing of elements that control the browser you need to mock one up using jsdom</li>
-                <li>DOM is document object model that stores the HTML in memory and allows JS to interact with it (without full reload)</li>
-                <li>Node is for backend development</li>
+                <li>JavaScript uses export/import method to load in modules</li>
+                <li>JavaScript has two ways to load in modules: legacy CommonJS and new ESM</li>
+                <li>Jest with ESM requires modification of package.json</li>
+                <li>Testing is unclear</li>
+                <li>I should not test in PROD</li>
             </p>
 
         </main>
