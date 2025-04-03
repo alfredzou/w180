@@ -1,4 +1,4 @@
-import {createImageGrid} from '../js/w9.js';
+import {createImageGrid} from '../js/w9_index.js';
 
 test("converts numbers into image paths", () => {
     expect(createImageGrid([1,2,3])).toEqual([
