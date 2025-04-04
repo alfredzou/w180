@@ -14,23 +14,19 @@
         
         <main>
             <p>
-                This week, I continued exploring how to test JavaScript code. I learned that it’s not as straightforward as python, as one cannot simply import code. JavaScript uses export to allow code to be imported. I’m not sure if this is a good or bad thing, but its notably different from Python. To make matters more confusing there are currently two methods for importing code: the older method CommonJS and the newer method ES Modules (ESM).
+                This week, I continued on in learning how to test JavaScript using Jest. So there was a bit of uncertainty how to make the website code run, and also allow it to be testable at the same time. This was quite a simple fix of adding type=”module” when importing it as html.
             </p>
-            
+
             <p>
-                I learnt the export/import for ESM, which was working fine via node. However, enabling ESM for Jest the testing module took a long time and trial and error. The docs weren’t that friendly, couldn’t find a good solution from AI and eventually landed on a solution in stack overflow.
+                Then there was the problem of my module having all this high-level code, which was being run when testing with Jest. To fix this I wrapped it up in a function. So then I was a bit unsure, how to proceed, i.e. how would the website know which functions to run. In Python, I would use a if __name__ == ‘__main__’, which I don’t believe is available in JavaScript. I could either put that logic into the html code, which means JavaScript is mixed in two areas. Instead I opted for an index.js entry point that would import the modules.            
             </p>
-            
+
             <p>
-                Then when I started to test, by creating an export for the function it broke the code to be used for the website. So, I’m in a sort of weird situation where testing the code, makes me change the way I write code. I’m not really sure how to fix this issue and will investigate next week. Could maybe do a conditional run if main, similar to Python’s if __name__ == ‘__main__’. Or, could separate module into its own file.
+                I tried testing in PROD, but it would keep crashing the webserver, which I would constant restart. I decided to start testing on my local machine. Unfortunately there was a issue with the paths as my local machine is a windows machine. I believe when I ran npm test, it was trying to run a bash script which doesn’t run in Windows. I tried to set this up in WSL instead to fix the pathing issue. This involved setting up all the github and webserver SSH, which took me some time. When setting up the SSH for webserver, I  learnt you can find the digital fingerprint in the webserver, which is interesting.
             </p>
-            
+
             <p>
-                Also, I’m uncertain how the testing will work for JavaScript run in the browser, as there is also JavaScript run in the backend with node.        
-            </p>
-            
-            <p>
-                Again, I had a few more crashes of the EC2 instance during testing, really need to start developing and testing on my home computer. It sounds insane to be testing in PROD.
+                Once I had all that set up, I tried to run npm test in WSL, but was hit by a different path issue. Then I realised I should be using a different entry point on my windows machine that would directly call the jest.js file. This worked, so next week I’m hoping to do some actual testing, maybe move into JSDOM as well.             
             </p>
             
             <h5>
@@ -38,11 +34,9 @@
             </h5>
             <p>
                 <li>Testing is hard</li>
-                <li>JavaScript uses export/import method to load in modules</li>
-                <li>JavaScript has two ways to load in modules: legacy CommonJS and new ESM</li>
-                <li>Jest with ESM requires modification of package.json</li>
-                <li>Testing is unclear</li>
-                <li>I should not test in PROD</li>
+                <li>I don't remember very well how to set up SSH keys</li>
+                <li>You can find digital fingerprint in VM</li>
+                <li>Testing in PROD is bad</li>
             </p>
 
         </main>
