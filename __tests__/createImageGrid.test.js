@@ -1,4 +1,4 @@
-import {createImageGrid} from '../js/w9_mod.js';
+import {createImageGrid} from '../js/w10_mod.js';
 
 // test("converts numbers into image paths", () => {
 //     expect(createImageGrid(
