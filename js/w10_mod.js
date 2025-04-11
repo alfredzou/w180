@@ -1,8 +1,26 @@
-export function createImageGrid(grid) {
-    for (let i = 0; i < grid.length; i++) {
-        grid[i] = `/images/MINESWEEPER_${grid[i]}.png`
+export const acceptedValues = [0,1,2,3,4,5,6,7,8,'F','M','X']
+
+export function inputValidation(grid) {
+    if (!Array.isArray(grid)) {
+        throw TypeError("Input must be an array.")
     }
 
+    if (grid.length !== 36) {
+        throw RangeError("Input array must contain exactly 36 items.")
+    }
+
+    if (!grid.every(element => acceptedValues.includes(element))) {
+        throw TypeError("Input array must contain accepted values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 'F', 'M', 'X'")
+    }    
+}
+
+export function createImagePath(grid) {
+    return grid.map(element => `/images/MINESWEEPER_${element}.png`)
+}
+
+export function createImageGrid(grid) {
+    inputValidation(grid)
+    grid = createImagePath(grid)
     return grid
 }
 
