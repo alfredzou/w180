@@ -14,23 +14,23 @@
         
         <main>
             <p>
-                This week, I continued on in learning how to test JavaScript using Jest. So there was a bit of uncertainty how to make the website code run, and also allow it to be testable at the same time. This was quite a simple fix of adding type=”module” when importing it as html.
+                This week, I continued on testing JavaScript with Jest. I did the testing on the local machine, which worked well. It generated another problem, where I don’t know how to test that the code is actually working from an end-to-end perspective on the website, but I can test the functions and make sure they work.
             </p>
 
             <p>
-                Then there was the problem of my module having all this high-level code, which was being run when testing with Jest. To fix this I wrapped it up in a function. So then I was a bit unsure, how to proceed, i.e. how would the website know which functions to run. In Python, I would use a if __name__ == ‘__main__’, which I don’t believe is available in JavaScript. I could either put that logic into the html code, which means JavaScript is mixed in two areas. Instead I opted for an index.js entry point that would import the modules.            
+                I split the function to generate the image grid into a few functions, so it would make testing easier, then I created 10 or so tests. The functions included the input validation, the code that actually converts the input array into a transformed array, and the final function that sequences both these functions.
             </p>
 
             <p>
-                I tried testing in PROD, but it would keep crashing the webserver, which I would constant restart. I decided to start testing on my local machine. Unfortunately there was a issue with the paths as my local machine is a windows machine. I believe when I ran npm test, it was trying to run a bash script which doesn’t run in Windows. I tried to set this up in WSL instead to fix the pathing issue. This involved setting up all the github and webserver SSH, which took me some time. When setting up the SSH for webserver, I  learnt you can find the digital fingerprint in the webserver, which is interesting.
+                By splitting it this way, it was a lot easier to test. For example, I could feed an array with 3 elements to test the transformation, without necessarily needing to satisfy the input validation which is 36 elements. Also from testing the input validation, it seems like the tests need to somehow need to not trigger each other. For example if, I am testing if the elements are an acceptable value (successive test), they need to be in a 36 character array (prior test). So successive input validation, must satisfy earlier input validation.
             </p>
 
             <p>
-                Once I had all that set up, I tried to run npm test in WSL, but was hit by a different path issue. Then I realised I should be using a different entry point on my windows machine that would directly call the jest.js file. This worked, so next week I’m hoping to do some actual testing, maybe move into JSDOM as well.             
+                This worked all good, in the future, I want to test the actual webpage, I think that is using JSDOM? Another frustration is the web server crashing all the time. I think this is partly due to vscode running javascript dependency checking and other extensions. I tried to disable it without much success. I think, to prevent this, I will need to just do all my development in local.
             </p>
             
             <p>
-                Also I had an issue where I would spend too much time on webdev. Going forwards I'll set a fixed-schedule which will limit webdev on saturday from 6-9am. I've had times where I've run over even into sunday. I think i've become more comfortable not finishing things and leaving it for later.
+                I also failed my fixed schedule of 9am. I'm finishing this at 4:20pm. I need to be better.
             </p>
             
             <h5>
@@ -38,10 +38,9 @@
             </h5>
             <p>
                 <li>Testing is hard</li>
-                <li>I don't remember very well how to set up SSH keys</li>
-                <li>You can find digital fingerprint in VM</li>
-                <li>Testing in PROD is bad</li>
-                <li>Fixed schedule is good</li>
+                <li>Split up functions for easier testing</li>
+                <li>Subsequent functions must work with prior components in testing</li>
+                <li>SSH vm crashes are frustrating</li>
             </p>
 
         </main>
