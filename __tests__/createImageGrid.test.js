@@ -1,4 +1,4 @@
-import {createImagePath, inputValidation, acceptedValues} from '../js/w10_mod.js';
+import {createImagePath, inputValidation, acceptedValues} from '../js/w11_mod.js';
 
 it("throws error if input is not an array", () => {
     expect(() => inputValidation(1)).toThrowError(TypeError("Input must be an array."))

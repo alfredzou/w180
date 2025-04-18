@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Week 10 Blog</title>
+        <link rel="stylesheet" href="./styles.css"/>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Week 10: Minesweeper Quiz V
+            </h1>
+        </header>
+        
+        <main>
+            <p>
+                This week, I continued on testing JavaScript with Jest. I did the testing on the local machine, which worked well. It generated another problem, where I don’t know how to test that the code is actually working from an end-to-end perspective on the website, but I can test the functions and make sure they work.
+            </p>
+
+            <p>
+                I split the function to generate the image grid into a few functions, so it would make testing easier, then I created 10 or so tests. The functions included the input validation, the code that actually converts the input array into a transformed array, and the final function that sequences both these functions.
+            </p>
+
+            <p>
+                By splitting it this way, it was a lot easier to test. For example, I could feed an array with 3 elements to test the transformation, without necessarily needing to satisfy the input validation which is 36 elements. Also from testing the input validation, it seems like the tests need to somehow need to not trigger each other. For example if, I am testing if the elements are an acceptable value (successive test), they need to be in a 36 character array (prior test). So successive input validation, must satisfy earlier input validation.
+            </p>
+
+            <p>
+                This worked all good, in the future, I want to test the actual webpage, I think that is using JSDOM? Another frustration is the web server crashing all the time. I think this is partly due to vscode running javascript dependency checking and other extensions. I tried to disable it without much success. I think, to prevent this, I will need to just do all my development in local.
+            </p>
+            
+            <p>
+                I also failed my fixed schedule of 9am. I'm finishing this at 4:20pm. I need to be better.
+            </p>
+            
+            <h5>
+                Learnings
+            </h5>
+            <p>
+                <li>Testing is hard</li>
+                <li>Split up functions for easier testing</li>
+                <li>Subsequent functions must work with prior components in testing</li>
+                <li>SSH vm crashes are frustrating</li>
+            </p>
+
+        </main>
+        
+        <footer>
+            <a href="index.html">Return home</a>
+        </footer>
+    </body>
+</html>
