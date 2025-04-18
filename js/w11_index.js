@@ -1,4 +1,4 @@
-import { createImageGrid, displayImageGrid } from "./w9_mod.js";
+import { createImageGrid, displayImageGrid } from "./w11_mod.js";
 
 const canvas = document.getElementById("minesweeperCanvas");
 const ctx = canvas.getContext("2d");
