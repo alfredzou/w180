@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { displayImageGrid } from '../js/w11_mod.js'
+import { displayImageGrid } from '../js/w12_mod.js'
 import { jest } from '@jest/globals'
 
 describe('displayImageGrid', () => {
