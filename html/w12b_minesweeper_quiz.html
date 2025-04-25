@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Week 11 Blog</title>
+        <link rel="stylesheet" href="./styles.css"/>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Week 11: Minesweeper Quiz VI
+            </h1>
+        </header>
+        
+        <main>
+            <p>
+                This week I continued on testing JavaScript. I added some finishing touches by using the describe function to group similar tests together. I had finished unit testing a function with Jest. Now I’m moving on to testing the rendering of images using JSDOM. To achieve this, it requires installing another package ‘jest-environment-jsdom’. 
+            </p>
+
+            <p>
+                I had an amazing discovery of an extension called live server. Now that I was testing and developing on local machine, I didn’t know how to view and display a html website. This extension live server opens the site locally. Straight up opening html doesn’t work, as for some reason it wasn’t rendering the images.
+            </p>
+
+            <p>
+                I started using JSDOM to test the rendering of images. To use JSDOM, you need to had some sort of header. I used a beforeEach function to create a set up for each test. This is good practice to keep tests isolated from each other. In this setup function, I simulated he DOM using document.body.innerHTML.
+            </p>
+
+            <p>
+                The canvas.getcontext() was giving me issues, as that’s not simulated by JSDOM. The solution to this is to install canvas, but because I am using a windows machine, there are compatibility issues. These window compatibility issues are so annoying, I'm really considering buying some sort of mac. To get around this I just mocked canvas. An important part of this was writing tests to check that the mocking is working, which seems a bit weird as I’m not testing the actual function I want to test. However, the idea behind this is to make sure that when real tests are run, they are succeeding or failing because of the function itself and not the way I mocked it.
+            </p>
+            
+            <p>
+                The testing of this rendering function takes an output of another function. I was wondering if I should directly call the function, but for isolation purposes I decided to redefine it. I’m not really sure this is the correct way.
+            </p>
+            
+            <p>
+                Next week, I will continue with actually testing the function. I’m not really sure the way to do this, as the variables inside the function to be tested are not currently exposed. How would I test them. The functionality I want to test is not really canvas and drawing the image, but the maths to determine the location and sizing of the images.
+            </p>
+            
+            <h5>
+                Learnings
+            </h5>
+            <p>
+                <li>Testing is hard</li>
+                <li>Live Server is an amazing extension that allows local testing of websites</li>
+                <li>Testing DOM requires JSDOM</li>
+                <li>JSDOM simulates a DOM, but has some limitations and potentially requires mocking</li>
+            </p>
+
+        </main>
+        
+        <footer>
+            <a href="index.html">Return home</a>
+        </footer>
+    </body>
+</html>
