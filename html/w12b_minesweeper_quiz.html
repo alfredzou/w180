@@ -14,37 +14,28 @@
         
         <main>
             <p>
-                This week I continued on testing JavaScript. I added some finishing touches by using the describe function to group similar tests together. I had finished unit testing a function with Jest. Now I’m moving on to testing the rendering of images using JSDOM. To achieve this, it requires installing another package ‘jest-environment-jsdom’. 
+                This week I continued on testing JavaScript. Previously I finished my testing using node, and now I’m moving onto testing using JSDOM. One of the immediate issues I had with my current method of testing using JSDOM is that I’m mocking the HTML. So for example if my test was mocking a html element called ‘my-input’ and checking for the mocked html element ‘my-input’ it will always pass. However, if in the actual HTML I change ‘my-input’ to ‘user-input’ the actual app will fail but my test will pass. To me these false positive tests are dangerous, so I went to look for a solution.
             </p>
 
             <p>
-                I had an amazing discovery of an extension called live server. Now that I was testing and developing on local machine, I didn’t know how to view and display a html website. This extension live server opens the site locally. Straight up opening html doesn’t work, as for some reason it wasn’t rendering the images.
+                The solution I landed on was reading in the actual HTML page and then creating the DOM of it using JSDOM. Unfortunately I was running into issue, which was frustrating me. I needed to import JSDOM to use the JSDOM constructor, but I couldn’t import it because it was missing the TextEncoder and TextDecoder classes. I was essentially stuck using the method of using a node test environment with @jest-environment jsdom.
             </p>
 
             <p>
-                I started using JSDOM to test the rendering of images. To use JSDOM, you need to had some sort of header. I used a beforeEach function to create a set up for each test. This is good practice to keep tests isolated from each other. In this setup function, I simulated he DOM using document.body.innerHTML.
+                I was able to resolve this problem, by separating out the tests into two categories: 1) backend testing only using node and 2) testing requiring the DOM using jsdom. To achieve this I named by tests with suffix node.test.js and jsdom.test.js to differentiate the two. Then using jest.config.js based on file naming I would separate them to be run using either node or jsdom. Then to fix the issue with TextEncoder and TextDecoder, I import them into my node setup file. The test for jsdom now works, which is great.
             </p>
 
             <p>
-                The canvas.getcontext() was giving me issues, as that’s not simulated by JSDOM. The solution to this is to install canvas, but because I am using a windows machine, there are compatibility issues. These window compatibility issues are so annoying, I'm really considering buying some sort of mac. To get around this I just mocked canvas. An important part of this was writing tests to check that the mocking is working, which seems a bit weird as I’m not testing the actual function I want to test. However, the idea behind this is to make sure that when real tests are run, they are succeeding or failing because of the function itself and not the way I mocked it.
+                Next week I will actually begin testing it properly. This week I felt like I did a lot of hard work figuring out the setup.
             </p>
-            
-            <p>
-                The testing of this rendering function takes an output of another function. I was wondering if I should directly call the function, but for isolation purposes I decided to redefine it. I’m not really sure this is the correct way.
-            </p>
-            
-            <p>
-                Next week, I will continue with actually testing the function. I’m not really sure the way to do this, as the variables inside the function to be tested are not currently exposed. How would I test them. The functionality I want to test is not really canvas and drawing the image, but the maths to determine the location and sizing of the images.
-            </p>
-            
+             
             <h5>
                 Learnings
             </h5>
             <p>
                 <li>Testing is hard</li>
-                <li>Live Server is an amazing extension that allows local testing of websites</li>
-                <li>Testing DOM requires JSDOM</li>
-                <li>JSDOM simulates a DOM, but has some limitations and potentially requires mocking</li>
+                <li>Splitting up DOM and back-end tests using jest.config.js is a great idea</li>
+                <li>Tests should reflect the actual project</li>
             </p>
 
         </main>
