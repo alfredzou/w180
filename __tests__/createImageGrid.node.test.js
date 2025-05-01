@@ -1,4 +1,4 @@
-import {createImagePath, inputValidation, acceptedValues} from '../js/w12_mod.js';
+import {createImagePath, inputValidation, acceptedValues} from '../js/w13_mod.js';
 
 describe('createImageGrid', () => {
     describe('inputValidation', () => {

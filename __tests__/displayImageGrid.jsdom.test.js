@@ -1,4 +1,4 @@
-import { displayImageGrid } from '../js/w12_mod.js'
+import { displayImageGrid } from '../js/w13_mod.js'
 import { jest } from '@jest/globals'
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
@@ -10,7 +10,7 @@ describe('displayImageGrid', () => {
 
     beforeEach(() => {
         try {
-            const htmlContent = fs.readFileSync('./html/w12_minesweeper_quiz.html','utf8')
+            const htmlContent = fs.readFileSync('./html/w13_minesweeper_quiz.html','utf8')
             console.log(htmlContent)
             const dom = new JSDOM(htmlContent)
             document = dom.window.document
