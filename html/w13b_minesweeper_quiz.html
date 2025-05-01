@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Week 12 Blog</title>
+        <link rel="stylesheet" href="./styles.css"/>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Week 12: Minesweeper Quiz VII
+            </h1>
+        </header>
+        
+        <main>
+            <p>
+                This week I continued on testing JavaScript. Previously I finished my testing using node, and now I’m moving onto testing using JSDOM. One of the immediate issues I had with my current method of testing using JSDOM is that I’m mocking the HTML. So for example if my test was mocking a html element called ‘my-input’ and checking for the mocked html element ‘my-input’ it will always pass. However, if in the actual HTML I change ‘my-input’ to ‘user-input’ the actual app will fail but my test will pass. To me these false positive tests are dangerous, so I went to look for a solution.
+            </p>
+
+            <p>
+                The solution I landed on was reading in the actual HTML page and then creating the DOM of it using JSDOM. Unfortunately I was running into issue, which was frustrating me. I needed to import JSDOM to use the JSDOM constructor, but I couldn’t import it because it was missing the TextEncoder and TextDecoder classes. I was essentially stuck using the method of using a node test environment with @jest-environment jsdom.
+            </p>
+
+            <p>
+                I was able to resolve this problem, by separating out the tests into two categories: 1) backend testing only using node and 2) testing requiring the DOM using jsdom. To achieve this I named by tests with suffix node.test.js and jsdom.test.js to differentiate the two. Then using jest.config.js based on file naming I would separate them to be run using either node or jsdom. Then to fix the issue with TextEncoder and TextDecoder, I import them into my node setup file. The test for jsdom now works, which is great.
+            </p>
+
+            <p>
+                Next week I will actually begin testing it properly. This week I felt like I did a lot of hard work figuring out the setup.
+            </p>
+             
+            <h5>
+                Learnings
+            </h5>
+            <p>
+                <li>Testing is hard</li>
+                <li>Splitting up DOM and back-end tests using jest.config.js is a great idea</li>
+                <li>Tests should reflect the actual project</li>
+            </p>
+
+        </main>
+        
+        <footer>
+            <a href="index.html">Return home</a>
+        </footer>
+    </body>
+</html>
